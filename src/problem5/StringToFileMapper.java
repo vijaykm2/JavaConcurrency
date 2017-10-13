@@ -35,13 +35,11 @@ public final class StringToFileMapper implements Callable<Long> {
                         return oldSet;
                     };
                     System.out.println("Word " +word+" is in "+ this.file.getName());
-                    Set<File> currentSet = Problem5.stringToFileMap.get(word);
 
                     Problem5.stringToFileMap.merge(word, fileSet, reMappingFunction);
                 }
 
             });
-            //count +=lineStream.count();
         }
         return count;
     }
