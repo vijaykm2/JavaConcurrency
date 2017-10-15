@@ -12,7 +12,7 @@ public class Problem5 {
     private File[] files;
     private ExecutorService  executorService;
     public Problem5(String dirName){
-        executorService = Executors.newFixedThreadPool(2);
+        executorService = Executors.newFixedThreadPool(4);
         File dir =  new File(dirName);
         files = dir.listFiles((dir1, name) -> name.endsWith(".txt"));
     }

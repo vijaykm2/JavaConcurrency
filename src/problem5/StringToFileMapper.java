@@ -31,8 +31,10 @@ public final class StringToFileMapper implements Callable<Long> {
                 for(String word: words){
                     //count = count.add(BigInteger.ONE);
                     BiFunction<Set<File>, Set<File>, Set<File>> reMappingFunction = (Set<File> oldSet, Set<File> newSet) -> {
-                        oldSet.addAll(newSet);
-                        return oldSet;
+                        Set<File> temp = new HashSet<>();
+                        temp.addAll(newSet);
+                        temp.addAll(oldSet);
+                        return temp;
                     };
                     System.out.println("Word " +word+" is in "+ this.file.getName());
 
