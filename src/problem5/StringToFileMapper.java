@@ -27,7 +27,7 @@ public final class StringToFileMapper implements Callable<Long> {
             fileSet.add(this.file);
             Stream<String> lineStream = reader.lines();
             lineStream.forEach(line -> {
-                String[] words = line.split(" ");
+                String[] words = line.split("[^\\w']+");
                 for(String word: words){
                     //count = count.add(BigInteger.ONE);
                     BiFunction<Set<File>, Set<File>, Set<File>> reMappingFunction = (Set<File> oldSet, Set<File> newSet) -> {
@@ -36,8 +36,6 @@ public final class StringToFileMapper implements Callable<Long> {
                         temp.addAll(oldSet);
                         return temp;
                     };
-                    System.out.println("Word " +word+" is in "+ this.file.getName());
-
                     Problem5.stringToFileMap.merge(word, fileSet, reMappingFunction);
                 }
 
